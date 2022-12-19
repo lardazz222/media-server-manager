@@ -198,19 +198,14 @@ $('.increment-button').on("click", function() {
 
 })
 
-// on .control span first child hover
-$('.control span:first-child').hover(function() {
-    // ignore .control sliders
-    if ($(this).parent().hasClass('slider-container')) {
-        return;
-    }
-    // .control has a .sub child, add the active class
-    $(this).parent().find('.sub').addClass('active');
-    // add active to the first child
+// control tooltips
+$('.control .tooltip').on("mouseenter", function() {
+    // add active class to tooltip
     $(this).addClass('active');
-}, function() {
-    // .control has a .sub child, remove the active class
-    $(this).parent().find('.sub').removeClass('active');
-    // remove active from the first child
+
+})
+
+$('.control .tooltip').on("mouseleave", function() {
+    // remove active class from tooltip
     $(this).removeClass('active');
 })

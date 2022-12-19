@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+	<link rel="stylesheet" href="./style.css">
+	<script src="assets/jquery-3.6.2.min.js"></script>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+</head>
+
+<body>
+
+	<div class="window-bar" id="winbar">
+		<button>X</button>
+		<span>
+			Media Center Manager
+		</span>
+	</div>
+	<div class="side-panel">
+		<button target="storage-content-panel">
+			<img src="assets/storagfe.png">
+			<span>Storage</span>
+		</button>
+		<button>
+			<img src="assets/music-notes.png">
+			<span>Music</span>
+		</button>
+		<button>
+			<img src="assets/tv.png">
+			<span>Movies</span>
+		</button>
+		<button>
+			<img src="assets/controller.png">
+			<span>Games</span>
+		</button>
+		<button target="demo-content-panel">
+			<img src="assets/gear.png">
+			<span>Demo page</span>
+		</button>
+		<button target="settings-content-panel">
+			<img src="assets/gear.png">
+			<span>Settings</span>
+		</button>
+
+	</div>
+
+	<div class="content-panel" id="demo-content-panel">
+		<div class="title">
+			<span>
+				Controls Demo Page
+			</span>
+			<div class="max"></div>
+		</div>
+		<div class="menu-section">
+			<span>User Controls Examples </span>
+		</div>
+		<div class="control button">
+			<span> Do something </span>
+			<button>
+				Button
+			</button>
+		</div>
+		<div class="control checkbox">
+			<div class="cb" checked="false">
+				<div class="cb-inner"></div>
+			</div>
+			<span> checkbox 1</span>
+		</div>
+		<div class="control checkbox">
+			<div class="cb" checked="false">
+				<div class="cb-inner"></div>
+			</div>
+			<span> checkbox 2</span>
+		</div>
+		<div class="control input">
+			<span> text input </span>
+			<input type="text" placeholder="Input">
+		</div>
+
+		<!-- int slider -->
+		<div class="control slider">
+			<span> Integer slider</span>
+			<span class="sub"></span>
+			<div class="slider-container" range="0,10" type="int" id="s0">
+				<div class="slider-inner">
+				</div>
+			</div>
+		</div>
+
+		<!-- float slider -->
+		<div class="control slider">
+			<span> Float slider</span>
+			<span class="sub"></span>
+			<div class="slider-container" range="0,25" type="float" id="s1">
+				<div class="slider-inner">
+				</div>
+			</div>
+		</div>
+
+		<!-- increment box -->
+		<div class="control increment" value="0" max="5" min="false">
+			<span>Increment Value (5 max, -infinity min)</span>
+			<div class="increment-container">
+				<div class="increment-inner">
+					<span class="increment-text">0</span>
+					<div class="increment-button">
+						<span>+</span>
+					</div>
+					<div class="increment-button">
+						<span>-</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- combo-box -->
+		<div class="control combo-box" value="" strings="">
+			<span> Combo box DEMO</span>
+			<div class="combo-box-container">
+				<div class="combo-box-text">
+					<span>Item 1</span>
+				</div>
+				<div class="combo-box-inner">
+					<div class="combo-box-item" value="item 1">
+						<span>Item 1</span>
+					</div>
+					<div class="combo-box-item" value="item 2">
+						<span>Item 2</span>
+					</div>
+					<div class="combo-box-item" value="item 3">
+						<span>Item 3</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- combo-box real demo -->
+		<div class="control combo-box" value="" strings="">
+			<span> Example Combo box</span>
+			<div class="combo-box-container">
+				<div class="combo-box-text">
+					<span>Select one</span>
+				</div>
+				<div class="combo-box-inner">
+					<div class="combo-box-item" value="Music">
+						<span>Music</span>
+					</div>
+					<div class="combo-box-item" value="Games">
+						<span>Games</span>
+					</div>
+					<div class="combo-box-item" value="Music + Games">
+						<span>Music + Games</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="menu-section">
+			<span>Graphs Examples </span>
+		</div>
+		<div class="auto-grid">
+			<!-- left to right, up to down auto place -->
+			<div class="graph">
+
+			</div>
+
+			<div class="graph a">
+
+			</div>
+			<div class="graph a">
+
+			</div>
+			<div class="graph">
+
+			</div>
+
+		</div>
+		<div class="menu-section">
+			<span>Media Previews Demo </span>
+		</div>
+		<div class="auto-grid">
+			<div class="media-item">
+				<img class="media-image" src="assets/cover.png">
+				<div class="media-details">
+					<span class="media-title">Title</span>
+					<span class="media-subtitle">Subtitle</span>
+				</div>
+			</div>
+			<div class="media-item">
+				<img class="media-image" src="assets/cover.png">
+				<div class="media-details">
+					<span class="media-title">Title</span>
+					<span class="media-subtitle">Subtitle</span>
+				</div>
+			</div>
+			<div class="media-item">
+				<img class="media-image" src="assets/cover.png">
+				<div class="media-details">
+					<span class="media-title">Title</span>
+					<span class="media-subtitle">Subtitle</span>
+				</div>
+			</div>
+			<div class="media-item">
+				<img class="media-image" src="assets/cover.png">
+				<div class="media-details">
+					<span class="media-title">Title</span>
+					<span class="media-subtitle">Subtitle</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- storage content panel -->
+	<div class="content-panel active" id="storage-content-panel">
+		<div class="title">
+			<span>
+				Manage your storage
+			</span>
+			<div class="max"></div>
+		</div>
+		<div class="menu-section">
+			<span>Media Locations </span>
+			<span class="info">
+				Add locations for the program to keep track of your media
+			</span>
+		</div>
+		<div class="auto-grid margin" id="locations-viewer">
+			<span>no locations added</span>
+		</div>
+		<!-- btn -->
+		<div class="control button">
+			<button id="add-media-location">
+				Add Location
+			</button>
+		</div>
+		<div class="menu-section">
+			<span>Free Up Space </span>
+			<span class="info">
+				Get rid of unused media to save on space or clear clutter
+			</span>
+			<span class="info">
+				*free space comes from the drive of each folder
+			</span>
+		</div>
+		<br>
+		<div class="space-bar" id="space-bars">
+
+		</div>
+		<br>
+		<div class="control button">
+			<button id="refresh-storage-index">
+				Refresh Storage Index
+			</button>
+		</div>
+		<br>
+		<div class="info-pane">
+			<div class="info-title">
+				<span>Storage information</span>
+			</div>
+			<div class="info-details">
+				<span id="free-space-id">Free Space: 0.00 GB</span>
+				<span id="used-space-id">Used Space: 0.00 GB</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- settings -->
+	<div class="content-panel" id="settings-content-panel">
+		<div class="title">
+			<span>
+				Application Settings
+			</span>
+			<div class="max"></div>
+		</div>
+		<div class="menu-section">
+			<span>Storage Settings </span>
+			<span class="info">
+				Change the behavior of the storage manager
+			</span>
+		</div>
+		<div class="control increment" value="0" max="30" min="0">
+			<span>Index frequency</span>
+			<span class="sub">How frequently the program indexes storage space</span>
+			<div class="increment-container">
+				<div class="increment-inner">
+					<span class="increment-text">0</span>
+					<div class="increment-button">
+						<span>+</span>
+					</div>
+					<div class="increment-button">
+						<span>-</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- combo-box -->
+		<div class="control combo-box" value="">
+			<span> Index interval</span>
+			<div class="combo-box-container">
+				<div class="combo-box-text">
+					<span>Per day</span>
+				</div>
+				<div class="combo-box-inner">
+					<div class="combo-box-item" value="Per day">
+						<span>Day</span>
+					</div>
+					<div class="combo-box-item" value="Per week">
+						<span>Week</span>
+					</div>
+					<div class="combo-box-item" value="Per month">
+						<span>Month</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- slider -->
+		<div class="control slider">
+			<span> File size threshold (MB)</span>
+			<span class="sub"></span>
+			<div class="slider-container" range="2,8048" type="int" config="min_file_size_threshold">
+				<div class="slider-inner">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="./script.js"></script>
+<script src="./renderer.js"></script>
+
+</html>

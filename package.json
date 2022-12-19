@@ -1,0 +1,23 @@
+{
+  "name": "music-data",
+  "version": "1.0.0",
+  "description": "view details of music collection",
+  "main": "web/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "haigou",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.0.0"
+  },
+  "dependencies": {
+    "check-disk-space": "^3.3.1",
+    "electron-acrylic-window": "^0.5.11",
+    "electron-reload": "^2.0.0-alpha.1",
+    "fast-folder-size": "^1.7.1",
+    "jquery": "^3.6.2",
+    "jquery-ui-dist": "^1.13.2",
+    "tippy.js": "^6.3.7"
+  }
+}

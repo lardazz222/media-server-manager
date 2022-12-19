@@ -1,0 +1,813 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    margin: 0px;
+    background-color: rgb(25, 25, 25);
+}
+
+.window-bar {
+    background-color: rgb(18, 18, 18);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 100;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+
+.window-bar button {
+    float: right;
+    height: 100%;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    -webkit-user-select: none;
+    -webkit-app-region: no-drag;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    margin-left: 10px;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
+
+.window-bar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.window-bar span {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+}
+
+.side-panel {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    z-index: 100;
+    margin: 15px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.side-panel button {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    height: 40px;
+    width: 100%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.side-panel button img {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.content-panel {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 40px;
+    left: 235px;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    margin: 15px;
+    border-radius: 10px;
+    overflow-y: auto;
+    display: none;
+}
+
+.content-panel.active {
+    display: block;
+}
+
+.content-panel .title {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.515);
+    backdrop-filter: blur(15px);
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0px 0px;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.content-panel .title span {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 10px;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+}
+
+.content-panel .control {
+    width: 100%;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.content-panel .control span {
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 10px;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+}
+
+.content-panel .control.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.content-panel .control.checkbox .cb {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.442);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.content-panel .control.checkbox .cb:hover {
+    background-color: rgba(61, 61, 61, 0.5);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.content-panel .control.checkbox .cb:active {
+    background-color: rgba(0, 0, 0, 0.983);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.content-panel .control.checkbox .cb.checked {
+    background-color: rgba(59, 127, 254, 0.983);
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* control button */
+.content-panel .control.button {
+}
+
+.content-panel .control.button span {
+    display: block;
+}
+
+.content-panel .control.button button {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border: none;
+    background-color: rgba(52, 52, 52, 0.787);
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: left;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    /* top border */
+    border-top: 2px solid rgba(71, 71, 71, 0.5);
+    border-right: 2px solid rgba(71, 71, 71, 0.5);
+}
+
+.content-panel .control.button button:hover {
+    background-color: rgba(61, 61, 61, 0.5);
+    transition: background-color 0.1s ease-in-out;
+}
+
+.content-panel .control.button button:active {
+    background-color: rgba(28, 28, 28, 0.983);
+    transition: background-color 0.1s ease-in-out;
+}
+
+/* disabled */
+.content-panel .control.button button.disabled {
+    filter: grayscale(100%);
+    border: none;
+    background-color: rgba(7, 7, 7, 0.706);
+    transition: background-color 0.1s ease-in-out;
+    cursor: not-allowed;
+}
+
+/* control input */
+
+.content-panel .control.input span {
+    display: block;
+}
+
+.content-panel .control.input input {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border: none;
+    background-color: rgba(52, 52, 52, 0.787);
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 40px;
+    font-family: "Poppins", sans-serif;
+    cursor: text;
+    border-radius: 5px;
+    text-align: left;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 450px;
+    box-sizing: border-box;
+    border: 2px solid rgba(71, 71, 71, 0.5);
+}
+
+.content-panel .control.input input:hover {
+    background-color: rgba(61, 61, 61, 0.5);
+    transition: background-color 0.1s ease-in-out;
+}
+
+.content-panel .control.input input:active {
+    background-color: rgba(28, 28, 28, 0.983);
+    transition: background-color 0.1s ease-in-out;
+}
+
+.content-panel .control.input input:focus {
+    background-color: rgba(28, 28, 28, 0.983);
+    transition: background-color 0.1s ease-in-out;
+    border: 2px solid rgba(59, 127, 254, 0.983);
+}
+
+.content-panel .control.input input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.content-panel .control.input input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.content-panel .control.input input::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.content-panel .control.input input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* remove orange outlines */
+.content-panel .control.input input:focus {
+    outline: none;
+}
+
+/* slider */
+.content-panel .control.slider {
+    display: block;
+    align-items: center;
+}
+
+.content-panel .control.slider span {
+    display: inline-block;
+}
+
+/* slider-container */
+.content-panel .control.slider .slider-container {
+    display: flex;
+    align-items: center;
+    width: 450px;
+    height: 20px;
+    background-color: rgba(52, 52, 52, 0.787);
+    border-radius: 5px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.content-panel .control.slider .slider-container.active {
+    /* blue glow */
+    box-shadow: 0px 0px 25px 2px rgba(255, 255, 255, 0.172);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.slider-inner {
+    width: 0%;
+    height: 100%;
+    background-color: rgb(44, 128, 255);
+    cursor: pointer;
+}
+
+/* remove on other inputs */
+.cb:focus {
+    outline: none;
+}
+
+/* remove on other inputs */
+button:focus {
+    outline: none;
+}
+
+.sub {
+    color: rgb(104, 104, 104) !important;
+    font-weight: 100;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.sub.active {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+.control span:first-child{
+    transition: text-shadow 0.2s ease-in-out;
+
+}
+.control span:first-child.active{
+    /* glow text */
+    text-shadow: 0px 0px 25px rgb(255, 255, 255);
+    transition: text-shadow 0.2s ease-in-out;
+}
+
+/* control combo-box */
+.content-panel .control.combo-box {
+    display: block;
+    align-items: center;
+}
+
+.content-panel .control.combo-box span {
+    display: inline-block;
+}
+
+.content-panel .control.combo-box .combo-box-container.active {
+    /* blue glow */
+    box-shadow: 0px 0px 25px 2px rgba(255, 255, 255, 0.172);
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.content-panel .control.combo-box .combo-box-container {
+    height: fit-content;
+    width: 250px;
+    background-color: rgba(52, 52, 52, 0.787);
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.content-panel .control.combo-box .combo-box-container:hover {
+    background-color: rgba(22, 22, 22, 0.575);
+    /* bottom & bottom right border */
+    transition: background-color 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.content-panel .control.combo-box .combo-box-container:active {
+    background-color: rgba(28, 28, 28, 0.983);
+    /* bottom & bottom right border */
+    transition: background-color 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.content-panel .control.combo-box .combo-box-container .combo-box-text {
+    display: block;
+    color: white;
+    background-color: rgb(47, 47, 47);
+    border-radius: 5px;
+}
+.content-panel .control.combo-box .combo-box-container .combo-box-text span {
+    display: block;
+}
+/* combo-box-inner */
+.content-panel .control.combo-box .combo-box-container .combo-box-inner {
+    height: 0;
+    background-color: transparent;
+    cursor: pointer;
+    transition: width 0.05s ease-in-out height 0.1s ease-in-out;
+    display: block;
+    padding-bottom: 1px;
+    overflow: hidden;
+}
+
+.content-panel .control.combo-box .combo-box-container .combo-box-inner.active {
+    height: fit-content;
+    transition: width 0.05s ease-in-out height 0.1s ease-in-out;
+}
+
+.content-panel .control.combo-box .combo-box-container .combo-box-item {
+    display: block;
+    height: 40px;
+    background-color: rgba(16, 16, 16, 0.575);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    box-sizing: border-box;
+    margin: 2px;
+}
+
+.content-panel .control.combo-box .combo-box-container .combo-box-item:hover {
+    background-color: rgba(0, 0, 0, 0.983);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.menu-section {
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    font-size: 25px;
+
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-left: 15px;
+    margin-top: 15px;
+    height: fit-content;
+}
+
+.menu-section span {
+    text-align: left;
+    display: block;
+}
+/* last child */
+.menu-section span.info {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(104, 104, 104);
+}
+
+/* content viewers */
+
+.graph {
+    width: 350px;
+    height: 350px;
+    background-color: rgba(52, 52, 52, 0.279);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.graph.a {
+    width: 500px;
+}
+.graph.c {
+    height: 500px;
+}
+
+.auto-grid {
+    margin: 10px;
+    margin-left: 25px;
+    background-color: rgba(15, 15, 15, 0.865);
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+.auto-grid.margin {
+    padding: 25px;
+}
+
+/* thin scrollbar */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* track */
+
+.media-item {
+    display: inline-block;
+    width: 300px;
+    height: 350px;
+    position: relative;
+    margin: 10px;
+}
+.media-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.media-item .media-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 0.575);
+    border-radius: 0 0 10px 10px;
+    z-index: 5;
+}
+
+.media-item .media-details .media-title {
+    display: block;
+    color: white;
+    font-size: 27px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+}
+
+.media-item .media-details .media-subtitle {
+    font-family: "Poppins", sans-serif;
+    display: block;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.location-item {
+    display: block;
+    padding: 10px;
+    background-color: rgb(46, 46, 46);
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    font-family: "Verdana", sans-serif;
+    border-radius: 5px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.location-item:hover {
+    background-color: rgb(255, 93, 93);
+}
+
+.location-item button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    visibility: hidden;
+}
+
+.location-item button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.location-item img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.location-item span {
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+/* increment control */
+/* control increment */
+.control.increment {
+    display: block;
+}
+
+/* increment-container */
+.control.increment .increment-container {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(47, 47, 47);
+    border-radius: 5px;
+    margin: 10px;
+    margin-top: 0;
+}
+
+/* increment-inner */
+.control.increment .increment-container .increment-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.control.increment .increment-container .increment-inner span {
+    float: left;
+    line-height: 50px;
+}
+
+.control.increment .increment-container .increment-inner .increment-button {
+    width: 50px;
+    line-height: 50px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.control.increment
+    .increment-container
+    .increment-inner
+    .increment-button
+    span {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+.control.increment
+    .increment-container
+    .increment-inner
+    .increment-button:hover {
+    background-color: rgba(29, 29, 29, 0.575);
+    transition: background-color 0.2s ease-in-out;
+}
+.control.increment
+    .increment-container
+    .increment-inner
+    .increment-button:active {
+    background-color: rgba(0, 0, 0, 0.575);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.space-bar {
+    height: 50px;
+    margin: 0 auto;
+    background-color: rgb(47, 47, 47);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.space-bar .inner-bar {
+    /* this is created dynamically, and the css will chaange throu JS */
+    height: 100%;
+    width: 50%;
+}
+
+.space-bar .inner-bar.blue {
+    /* top down gradsient using rgb(0, 98, 255) */
+    background: rgb(0, 98, 255);
+    background: linear-gradient(
+        0deg,
+        rgb(51, 126, 255) 10%,
+        rgb(0, 72, 189) 100%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.space-bar .inner-bar.blue.a {
+    /* top down gradsient using rgb(0, 98, 255) */
+    background: rgb(0, 98, 255);
+    background: linear-gradient(
+        0deg,
+        rgb(35, 113, 248) 10%,
+        rgb(68, 137, 248) 100%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.space-bar .inner-bar.red {
+    /* top down gradsient using rgb(255, 0, 0) */
+    background: rgb(255, 0, 0);
+    background: linear-gradient(0deg, rgb(251, 106, 106) 10%, rgb(255, 50, 50) 100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.space-bar .inner-bar.green {
+    /* top down gradsient using rgb(0, 255, 0) */
+    background: rgb(0, 255, 0);
+    background: linear-gradient(0deg, rgb(68, 255, 68) 10%, rgb(138, 255, 138) 100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.space-bar .inner-bar.yellow {
+    /* top down gradsient using rgb(255, 255, 0) */
+    background: rgb(255, 255, 0);
+    background: linear-gradient(
+        0deg,
+        rgb(255, 255, 65) 10%,
+        rgb(255, 255, 108) 100%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.space-bar .inner-bar.orange {
+    /* top down gradsient using rgb(255, 165, 0) */
+    background: rgb(255, 165, 0);
+    background: linear-gradient(
+        0deg,
+        rgb(248, 180, 52) 10%,
+        rgb(240, 183, 91) 100%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.space-bar .inner-bar.purple {
+    /* top down gradsient using rgb(128, 0, 128) */
+    background: rgb(128, 0, 128);
+    background: linear-gradient(
+        0deg,
+        rgb(214, 40, 214) 10%,
+        rgb(211, 81, 211) 100%
+    );
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+.content-panel .info-pane{
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.content-panel .info-pane .info-title{
+    font-size: 25px;
+    font-weight: 500;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    margin: 0;
+}
+.content-panel .info-pane .info-details{
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    margin: 0;
+}
+
+.content-panel .info-pane .info-details span{
+
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(47, 47, 47);
+    border-radius: 5px;
+    width: 500px;
+}
+
+.tippy-box[data-theme~="custom"] {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+  }
